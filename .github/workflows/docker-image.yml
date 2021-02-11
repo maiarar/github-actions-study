@@ -39,9 +39,6 @@ jobs:
           file: ./Dockerfile
           push: true
           tags: maiara/gt-actions:latest
-          repository: maiara/gt-actions
-
-
 
   # push_to_registry:
   #   name: Push Docker image to DockerHub
