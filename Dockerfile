@@ -1,11 +1,10 @@
 # Build stage
 FROM node:12-alpine as builder
+WORKDIR /usr/src/app
+COPY package*.json ./
 RUN npm install
 
-# Test stage
-FROM builder as test
-RUN npm test
+COPY . .
+EXPOSE 3000
 
-# Package stage
-FROM node:8.9.4-alpine
-COPY --from=builder /app .
+CMD ["npm", "test"]
