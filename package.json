@@ -1,7 +1,7 @@
 {
     "name": "github-actions-study",
     "version": "0.1.0",
-    "description": "Project with a simple todo, but for github actions study",
+    "description": "Simple project, but for github actions study",
     "main": "index.js",
     "scripts": {
         "start": "nodemon index.js",
@@ -20,15 +20,8 @@
         "url": "https://github.com/maiarar/github-actions-study/issues"
     },
     "homepage": "https://github.com/maiarar/github-actions-study#readme",
-    "dependencies": {
-        "dotenv": "^8.2.0",
-        "ejs": "^3.1.5",
-        "express": "^4.17.1",
-        "mongoose": "^5.11.14"
-    },
     "devDependencies": {
         "jest": "^26.6.3",
-        "mongodb-memory-server": "^6.9.3",
         "nodemon": "^2.0.7"
     }
 }

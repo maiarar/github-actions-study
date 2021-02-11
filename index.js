@@ -1,40 +1,10 @@
-const express = require('express');
-const app = express();
-const dotenv = require("dotenv");
-const mongoose = require("mongoose");
-const TodoTask = require("./models/TodoTask");
+var http = require('http');
 
-
-dotenv.config();
-
-app.use('/static', express.static('public'));
-
-app.use(express.urlencoded({ extended: true }));
-
-// database connection
-mongoose.connect(process.env.DB_CONNECT, { useNewUrlParser: true, useUnifiedTopology: true }, () => {
-    console.log(`connected to database ${process.env.DB_CONNECT}`)
-    app.listen(3000, () => console.log('Server started and listening on port 3000!'));
-});
-
-app.set('view engine', 'ejs');
-
-app.get("/", (req, res) => {
-    TodoTask.find({}, (err, tasks) => {
-        res.render("todo.ejs", { TodoTasks: tasks });
+http.createServer(function(req, res) {
+    res.writeHead(200, {
+        'Content-Type': 'text/html'
     });
-});
-
-app.post('/', async(req, res) => {
-    const todoTask = new TodoTask({
-        content: req.body.content
-    });
-    try {
-        await todoTask.save();
-        console.log('deu bom')
-        res.redirect("/");
-    } catch (err) {
-        console.log(`deu ruim\n${err}`)
-        res.redirect("/");
-    }
-});
+    res.write(`<!doctype html><html lang="pt-br"><meta charset="utf-8"><h1 style="color: #5e9ca0;">Hello!</h1><h1 style="color: #5e9ca0;"><span style="color: #3366ff;">You are looking at an amazing blank page, with a wonderful motivational text on it!</span></h1><h1><span style="color: #99cc00;">Don't forget:</span></h1><ul><li style="color: #5e9ca0;"><h1><span style="color: #000080;">Drink water</span></h1></li><li style="color: #5e9ca0;"><h1><span style="color: #800000;">Fuck facists</span></h1></li><li style="color: #5e9ca0;"><h1><span style="color: #666699;">And take care of your mind :)</span></h1></li></ul>`);
+    res.end();
+}).listen(3000, 'localhost');
+console.log('Página de pé em localhost:3000');

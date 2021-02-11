@@ -5,6 +5,6 @@ COPY package*.json ./
 RUN npm install
 
 COPY . .
-EXPOSE 3000
+EXPOSE 3000/tcp
 
-CMD ["npm", "test"]
+CMD ["npm", "start"]
