@@ -4,7 +4,7 @@ RUN npm install
 
 # Test stage
 FROM builder as test
-RUN npm run test
+RUN npm test
 
 # Package stage
 FROM node:8.9.4-alpine
