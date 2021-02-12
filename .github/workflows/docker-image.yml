@@ -19,7 +19,7 @@ jobs:
       - name: checkout in release
         uses: actions/checkout@v2
         with:
-          ref: ${{ github.event.release.tag_name }
+          ref: ${{ github.event.release.tag_name }}
       - name: Build and push release tag
         id: docker_build_tag
         uses: docker/build-push-action@v2
