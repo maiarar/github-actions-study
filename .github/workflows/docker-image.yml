@@ -26,4 +26,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: maiara/gt-actions:github.ref
+          tags: maiara/gt-actions:${{ github.event.release.tag_name }}
